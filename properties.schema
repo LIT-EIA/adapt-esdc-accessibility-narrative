@@ -62,11 +62,11 @@
       "validators": ["required"],
       "help": "Whether completion is based on the learner having viewed all the narrative items - or just having viewed the component"
     },
-	"componentWidthRatio" : {
+	"narrativeWidthRatio" : {
       "type" : "number",
       "default" : 50,
       "inputType": "Range",
-      "title": "Component Width Ratio",
+      "title": "Narrative Width Ratio",
       "help": "The width ratio in percentages between the narrative main text and graphic.",
       "translatable": true
     },

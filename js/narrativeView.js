@@ -106,12 +106,12 @@ define([
 
         calculateWidths: function() {
             var itemCount = this.model.get('_children').length;
-            var componentWidthRatio = this.model.get('componentWidthRatio');
+            var narrativeWidthRatio = this.model.get('narrativeWidthRatio');
             this.model.set({
                 '_totalWidth': 100 * itemCount,
                 '_itemWidth': 100 / itemCount,
-              '_slideContainerWidth': componentWidthRatio && window && window.innerWidth > 765 ? (parseInt(componentWidthRatio) - 2) : undefined,
-              '_contentWidth': componentWidthRatio && window && window.innerWidth > 765 ? (100 - parseInt(componentWidthRatio) - 2) : undefined
+              '_slideContainerWidth': narrativeWidthRatio && window && window.innerWidth > 765 ? (parseInt(narrativeWidthRatio) - 2) : undefined,
+              '_contentWidth': narrativeWidthRatio && window && window.innerWidth > 765 ? (100 - parseInt(narrativeWidthRatio) - 2) : undefined
             });
         },
 
