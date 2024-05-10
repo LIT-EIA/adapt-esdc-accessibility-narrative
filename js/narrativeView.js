@@ -158,7 +158,7 @@ define([
             this.remove();
             $.a11y_update();
             _.defer(function() {
-                Adapt.trigger('device:resize');
+                //Adapt.trigger('device:resize');
             });
         },
 
@@ -187,7 +187,7 @@ define([
           this.remove();
           $.a11y_update();
           _.defer(function() {
-              Adapt.trigger('device:resize');
+              //Adapt.trigger('device:resize');
           });
       },
 
