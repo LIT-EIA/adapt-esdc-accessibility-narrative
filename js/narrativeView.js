@@ -127,7 +127,9 @@ define([
         reRender: function() {
             if (this.model.get('_wasHotgraphic') && this.isLargeMode()) {
                 this.replaceWithHotgraphic();
-            } else {
+            } else if(this.model.get('_wasGuidedtour') && this.isLargeMode()) {
+              this.replaceWithGuidedtour();
+            }else {
                 this.resizeControl();
             }
         },
@@ -152,7 +154,7 @@ define([
             var newHotgraphic = new HotgraphicView({ model: model });
             var $container = $(".component-container", $("." + this.model.get("_parentId")));
 
-            $container.append(newHotgraphic.$el);
+            $container.html(newHotgraphic.$el);
             this.remove();
             $.a11y_update();
             _.defer(function() {
@@ -172,6 +174,33 @@ define([
 
             return model;
         },
+
+        replaceWithGuidedtour: function() {
+          if (!Adapt.componentStore.guidedtour) throw "Guidedtour not included in build";
+          var GuidedtourView = Adapt.componentStore.guidedtour.view;
+
+          var model = this.prepareGuidedtourModel();
+          var newGuidedtour = new GuidedtourView({ model: model });
+          var $container = $(".component-container", $("." + this.model.get("_parentId")));
+
+          $container.html(newGuidedtour.$el);
+          this.remove();
+          $.a11y_update();
+          _.defer(function() {
+              Adapt.trigger('device:resize');
+          });
+      },
+
+      prepareGuidedtourModel: function() {
+          var model = this.model;
+          model.set({
+              '_component': 'guidedtour',
+              'body': model.get('originalBody'),
+              'instruction': model.get('originalInstruction')
+          });
+
+          return model;
+      },
 
         moveSliderToIndex: function(itemIndex) {
             var offset = this.model.get('_itemWidth') * itemIndex;
