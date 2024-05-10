@@ -140,16 +140,6 @@
                 "translatable": true
               }
             }
-          },
-          "strapline": {
-            "type": "string",
-            "required": true,
-            "default": "",
-            "title": "Narrative strapline",
-            "inputType": "Text",
-            "validators": ["required"],
-            "help": "",
-            "translatable": true
           }
         }
       }
